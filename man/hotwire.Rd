@@ -1,13 +1,13 @@
 \name{hotwire}
 \alias{hotwire}
 \title{Cálculo de velocidade e calibração de sondas de fio quente}
-\description{Descrição geral das funções da biblioteca \code{hotwire}
+\description{Descrição geral das funções da biblioteca hotwire
   usadas no cálculo de velocidade e calibração de sondas de fio quente.}
 
 
 \details{
 
-  A biblioteca \code{hotwire} possui funções para cálculo de velocidade
+  A biblioteca \pkg{hotwire} possui funções para cálculo de velocidade
   de sondas de fio quente. Aqui não existe nenhuma referência a como
   foram obtidos os dados do fio quente (tensões por exemplo).
 
@@ -79,12 +79,9 @@
   cabos utilizados. Para configurar isso, favor procurar a documentação
   da DANTEC ou do sistema que está sendo utlizado. Para o sistem 54N81,
   a dantec fornece uma planilha excel que pode ser utilizada para
-  configurar os DS. Ela pode ser encontrada em
-  \url{http://www.dantecdynamics.com/Admin/Public/DWSDownload.aspx?File=%2fFiles%2ffiler%2fProducts+and+Services%2fGeneral+literature%2fMini-CTA_Excel_spreadsheet_v3A.XLS}.
+  configurar os DS. Ela pode ser encontrada em no diretório retornado por:
 
-    Uma cópia desta planilha pode ser encontrada no diretório retornado por:
-
-    \code{.path.package('hotwire')}
+  \code{.path.package('hotwire')}
 
     
 
