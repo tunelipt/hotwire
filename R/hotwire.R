@@ -49,7 +49,14 @@ kingVel <- function(Ten, V){
 }
 
 
-  
+makePolyFit <- function(degree){
+  function(x,y){
+    fit <- lm(y ~ poly(x, degree))
+    function(x)
+      as.vector(predict.lm(fit, newdata=data.frame(x)))
+  }
+}
+
 
 # Cria uma sequência de números com distribuição log
 distrLog <- function(xmin, xmax, N){
