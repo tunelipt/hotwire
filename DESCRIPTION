@@ -1,12 +1,12 @@
 Package: hotwire
 Version: 0.5
 Date: 2007-09-19
-Title: Funções de anemometria de fio quente
+Title: Funcoes de anemometria de fio quente
 Author: Paulo Jabardo <pjabardo@gmail.com>
  contributions from A. User <A.User@whereever.net>.
 Maintainer: Paulo Jabardo <pjabardo@gmail.com>
 Depends: R (>= 1.8.0)
 Suggests: Rnidaq
-Description: Funções para uso e operação de anemômetros de fio quente no R.
+Description: Funcoes para uso e operacao de anememetros de fio quente no R.
 License: GPL version 2 or newer
      
