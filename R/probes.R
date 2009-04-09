@@ -123,9 +123,9 @@ hwCalibrProbe3D <- function(probe, E1, Ucal1, E2, Ucal2, E3, Ucal3, temperature=
     Ue2 <- calibr2(E2, Ta)^2 * fe2
     Ue3 <- calibr3(E3, Ta)^2 * fe3
     
-    U1 <- sqrt(f * abs( (k2*k3-h3)* Ue1 + (h1*h3-k3)*Ue2 + (1-h1*k2)*Ue3 ) ) 
-    U2 <- sqrt(f * abs( (1-h2*k3)* Ue1 + (k1*k3-h1)*Ue2 + (h1*h2 - k1)*Ue3 ) )
-    U3 <- sqrt(f * abs( (h2*h3-k2)* Ue1 + (1-h3*k1)*Ue2 + (k1*k2-h2)*Ue3 ) )
+    U1 <- sqrt(f * ( (k2*k3-h3)* Ue1 + (h1*h3-k3)*Ue2 + (1-h1*k2)*Ue3 ) ) 
+    U2 <- sqrt(f * ( (1-h2*k3)* Ue1 + (k1*k3-h1)*Ue2 + (h1*h2 - k1)*Ue3 ) )
+    U3 <- sqrt(f * ( (h2*h3-k2)* Ue1 + (1-h3*k1)*Ue2 + (k1*k2-h2)*Ue3 ) )
 
 
     return(cbind(-a1[1]*U1 - a2[1]*U2 - a3[1]*U3,
