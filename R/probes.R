@@ -112,21 +112,32 @@ hwCalibrProbe3D <- function(probe, E1, Ucal1, E2, Ucal2, E3, Ucal3, temperature=
   a1 <- sapply(probe$sensors[[1]][c('X', 'Y', 'Z')], cos)
   a2 <- sapply(probe$sensors[[2]][c('X', 'Y', 'Z')], cos)
   a3 <- sapply(probe$sensors[[3]][c('X', 'Y', 'Z')], cos)
+  A <- matrix(c(k1, 1, h1, h2, k2, 1, 1, h3, k3), 3, 3, byrow=TRUE)
+  A <- solve(A)
+  aa <- cos(d2r(54.74))^2
+  fe1 <- (k1 +    1 +  h1)*aa
+  fe2 <- (h2 +    k2 + 1)*aa
+  fe3 <- (1  +    h3 + k3)*aa
   
-  f <- 1/( k1*(k2*k3-h3) - h2*k3 + h1*(h2*h3-k2) + 1 )
-  fe1 <- (k1*a1[1]^2 +    a2[1]^2 + h1*a3[1]^2)
-  fe2 <- (h2*a1[1]^2 + k2*a2[1]^2 +    a3[1]^2)
-  fe3 <- (   a1[1]^2 + h3*a2[1]^2 + k3*a3[1]^2)
-  
+  #fe1 <- k1*a1[1]^2 +    a2[1]^2 + h1*a3[1]^2
+  #fe2 <- h2*a1[1]^2 + k2*a2[1]^2 +    a3[1]^2
+  #fe3 <-    a1[1]^2 + h3*a2[1]^2 + k3*a3[1]^2
   function(E1, E2, E3, Ta=T0){
     Ue1 <- calibr1(E1, Ta)^2 * fe1
     Ue2 <- calibr2(E2, Ta)^2 * fe2
     Ue3 <- calibr3(E3, Ta)^2 * fe3
     
-    U1 <- sqrt(f * ( (k2*k3-h3)* Ue1 + (h1*h3-k3)*Ue2 + (1-h1*k2)*Ue3 ) ) 
-    U2 <- sqrt(f * ( (1-h2*k3)* Ue1 + (k1*k3-h1)*Ue2 + (h1*h2 - k1)*Ue3 ) )
-    U3 <- sqrt(f * ( (h2*h3-k2)* Ue1 + (1-h3*k1)*Ue2 + (k1*k2-h2)*Ue3 ) )
+    U1 <- (A[1,1]*Ue1 + A[1,2]*Ue2 + A[1,3]*Ue3)  
+    U2 <- (A[2,1]*Ue1 + A[2,2]*Ue2 + A[2,3]*Ue3)  
+    U3 <- (A[3,1]*Ue1 + A[3,2]*Ue2 + A[3,3]*Ue3)  
 
+    U1[U1<0] <- 0
+    U2[U2<0] <- 0
+    U3[U3<0] <- 0
+
+    U1 <- sqrt(U1)
+    U2 <- sqrt(U2)
+    U3 <- sqrt(U3)
 
     return(cbind(-a1[1]*U1 - a2[1]*U2 - a3[1]*U3,
                  -a1[2]*U1 - a2[2]*U2 - a3[2]*U3,
