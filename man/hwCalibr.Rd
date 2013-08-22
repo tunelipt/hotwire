@@ -1,6 +1,6 @@
 \name{hwCalibr}
 \alias{hwCalibr}
-\title{Curva de calibração de sondas de fio quente}}
+\title{Curva de calibração de sondas de fio quente}
 \usage{
   hwCalibr(tens, vel, temp, T0 = 25, Tw = 245,
     curveFit = kingVel)
@@ -35,7 +35,7 @@
   Ous seja, esta função retorna, a partir de parâmetros e
   medições de calibração uma função do tipo:
 
-  \code{function(tens, Ta)}...
+  \code{function(tens, Ta)} ...
 
   Para fazer isso, a função primeiro corrige os valores de
   tensão para a condição de referência (para a mesma

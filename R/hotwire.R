@@ -187,7 +187,7 @@ distrLog <- function(xmin, xmax, N){
 
 
 
-#' Curva de calibração de sondas de fio quente}
+#' Curva de calibração de sondas de fio quente
 #'
 #' Retorna função que calcula a velocidade medida no fio
 #' quente a partir da tensão e temperatura de medida.
@@ -201,7 +201,7 @@ distrLog <- function(xmin, xmax, N){
 #'   Ous seja, esta função retorna, a partir de parâmetros e medições de
 #'   calibração uma função do tipo:
 #' 
-#'   \code{function(tens, Ta)}...
+#'   \code{function(tens, Ta)} ...
 #' 
 #'   Para fazer isso, a função primeiro corrige os valores de tensão para a
 #'   condição de referência (para a mesma velocidade qual seria a tensão se
