@@ -1,20 +1,21 @@
 \name{distrLog}
 \alias{distrLog}
-\title{Sequencia de números com distribuição logarítimica}
-\description{Cria uma sequência de números que tem uma distribuição
-  log. Pode ser utilizado para determinar as velocidades de calibração.}
-
-\usage{x <- distrLog(xmin, xmax, N)}
-
-\arguments{
-  \item{xmin}{Ponto mínimo}
-  \item{xmax}{Ponto máximo}
-  \item{N}{Número total de números}
+\title{Sequencia de nÃºmeros com distribuiÃ§Ã£o logarÃ­timica}
+\usage{
+  distrLog(xmin, xmax, N)
 }
+\arguments{
+  \item{xmin}{Ponto mÃ­nimo}
 
+  \item{xmax}{Ponto mÃ¡ximo}
 
-\value{Vetor de números}
-
+  \item{N}{NÃºmero total de nÃºmeros}
+}
+\description{
+  Cria uma sequÃªncia de nÃºmeros que tem uma distribuiÃ§Ã£o
+  log. Pode ser utilizado para determinar as velocidades de
+  calibraÃ§Ã£o.
+}
 \examples{
 A <- 6
 B <- 2
@@ -26,5 +27,4 @@ tens <- sqrt(B + A*u^n)
 
 plot(u, tens, ty='b')
 }
-
 

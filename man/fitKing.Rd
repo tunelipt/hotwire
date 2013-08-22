@@ -1,50 +1,55 @@
 \name{fitKing}
 \alias{fitKing}
 \title{Ajuste de curva segundo a lei de King generalizada}
-\description{Acha os coeficientes da lei de King generalizada para uma
-  sequência de medidas (tensão,velocidade)}
-
-\usage{fit <- fitKing(Ten, Vel)}
-
+\usage{
+  fitKing(Ten, V)
+}
 \arguments{
-  \item{Ten}{Tensão medida (pode ser corrigida)}
-  \item{Vel}{Velocidade}
-}
+  \item{Ten}{TensÃ£o de calibraÃ§Ã£o.}
 
+  \item{V}{Velocidade de calibraÃ§Ã£o.}
+}
+\value{
+  Lista com os parÃ¢metros da Lei de King generalizada A, B
+  e n.
+}
+\description{
+  Acha os coeficientes da lei de King generalizada para uma
+  sequÃªncia de medidas (tensÃ£o,velocidade)
+}
 \details{
-  Um dos modelos mais simples para o fio quente é a lei de king
-  generalizada:
-  \deqn{T^2 = A + B\cdot U^n}{T^2 = A+B.U^n}
-  
-  Esta é uma curva muitas vezes adequada para a representação de curvas
-  de calibração. Observe que é importante que cada ponto obtido
-  corresponda a uma mesma temperatura de referência. Se necessário é
-  interessante utilizar a função \code{\link{tempCorr}} para se chegar a
-  uma mesma temperatura de referência para todos os pontos.
-  
+  Um dos modelos mais simples para o fio quente Ã© a lei de
+  king generalizada: \deqn{T^2 = A + B\cdot U^n}{T^2 =
+  A+B.U^n}
+
+  Esta Ã© uma curva muitas vezes adequada para a
+  representaÃ§Ã£o de curvas de calibraÃ§Ã£o. Observe que Ã©
+  importante que cada ponto obtido corresponda a uma mesma
+  temperatura de referÃªncia. Se necessÃ¡rio Ã© interessante
+  utilizar a funÃ§Ã£o \code{\link{tempCorr}} para se chegar a
+  uma mesma temperatura de referÃªncia para todos os pontos.
 }
-
-\value{Lista com os coeficientes de ajuste A, B e n}
-
 \examples{
-# Exemplo de velocidade e tensão
+# Exemplo de velocidade e tensÃ£o
 vel <- 1:15
 tens <- sqrt(6 + 2*vel^0.43)
 
-# Adicionar um pouco de ruído para simular dados experimentais:
+# Adicionar um pouco de ruÃ­do para simular dados experimentais:
 velb <- vel + rnorm(length(vel), sd=0.3)
 
 # Fazer o ajuste:
 fit <- fitKing(tens, velb)
-cat("A = ", fit$A, '\nB = ', fit$B, '\nn = ', fit$n, '\n', sep='')
+cat("A = ", fit$A, '\\nB = ', fit$B, '\\nn = ', fit$n, '\\n', sep='')
 
 #Plotar os dados:
-plot(tens, velb, xlab='Tensão (V)', ylab='Velocidade (m/s)',
-main='Curva de Calibração de fio quente')
+plot(tens, velb, xlab='TensÃ£o (V)', ylab='Velocidade (m/s)',
+main='Curva de CalibraÃ§Ã£o de fio quente')
 
 # Plotar o ajuste:
 
 lines(tens, ((tens^2-fit$A)/fit$B)^(1/fit$n))
 }
-
+\seealso{
+  \code{\link{kingVel}}
+}
 

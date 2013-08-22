@@ -1,3 +1,5 @@
+#' Configuração de sonda 55R91.
+#' @export
 dantec55R91 <- function(){
   support <- hwSupport()
   bridge <- hwBridge()

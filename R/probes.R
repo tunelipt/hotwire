@@ -1,6 +1,7 @@
 
 
-
+#' Configuração do condicionador de sinais
+#' @export
 hwSignalConditioner <- function(offset=0, gain=1, lowPassFilter=30000){
 
   config <- list(offser=offset, gain=gain, lowPassFilter=lowPassFilter)
@@ -9,6 +10,8 @@ hwSignalConditioner <- function(offset=0, gain=1, lowPassFilter=30000){
 }
 
 
+#' Configuração da ponte
+#' @export
 hwBridgeConfig <- function(shape="Film", bridgeRatio="1:20", ampGain=8, filter=3, cableCompensation=0, coolingInterval=2){
 
   config <- list(shape=shape, bridgeRatio=bridgeRatio, ampGain=ampGain, filter=filter, cableCompensation=0, coolingInterval=coolingInterval)
@@ -19,6 +22,8 @@ hwBridgeConfig <- function(shape="Film", bridgeRatio="1:20", ampGain=8, filter=3
 
 
 
+#' Configuração do cabo
+#' @export
 hwCable <- function(name="A1863", L=4, R = 0.2, impedence=50,  connectors=2, description=""){
 
   cable <- list(name=name, L=L, R=R, impedence=impedence, connectors=connectors, description=description)
@@ -27,11 +32,15 @@ hwCable <- function(name="A1863", L=4, R = 0.2, impedence=50,  connectors=2, des
 }
 
 
+#' Configuração do suporte
+#' @export
 hwSupport <- function(name='55H21', D=4, L=235, Lc=765, contacts=1, R=0.44){
   support <- list(name=name, D=D, L=L, Lc=Lc, contacts=contacts, R=R)
   class(support) <- "Support"
 }
 
+#' Parâmetros de configuração de um fio.
+#' @export
 hwWire <- function(R=3.4, alpha=0.4, T0=25, RL=0.5, overheat=0.8, X=pi/2, Y=0, Z=0, k=0.04, h=1, Tmax=300, Tamax=150){
 
 
@@ -40,7 +49,8 @@ hwWire <- function(R=3.4, alpha=0.4, T0=25, RL=0.5, overheat=0.8, X=pi/2, Y=0, Z
   return(wire)
 }
 
-
+#' Configuração de uma sonda.
+#' @export
 hwProbe <- function(support, cable, bridge, signal, ...){
 
   sensors <- list(...)
@@ -62,9 +72,14 @@ hwProbe <- function(support, cable, bridge, signal, ...){
   return(probe)
 }
 
+
+#' Calcula a temperatura de referência.
+#' @export
 hwRefTemp <- function(probe)
   return(probe$sensors[[1]]$T0)
 
+#' Calcula a temperatura de operação.
+#' @export
 hwOperatingTemp <- function(probe, sensor=1){
   wire <- probe$sensors[[sensor]]
 
@@ -79,7 +94,8 @@ hwOperatingTemp <- function(probe, sensor=1){
 
 
   
-
+#' Calibração de sensor 1D
+#' @export
 hwCalibrProbe1D <- function(probe, E, Ucal, temperature=NULL, curvefit=kingVel){
   if (is.null(temperature)){
     temperature <- hwRefTemp(probe)
@@ -91,6 +107,8 @@ hwCalibrProbe1D <- function(probe, E, Ucal, temperature=NULL, curvefit=kingVel){
   return(calibr)
 }
 
+#' Calibração de sensor 3D
+#' @export
 hwCalibrProbe3D <- function(probe, E1, Ucal1, E2, Ucal2, E3, Ucal3, temperature=NULL, curvefit=kingVel){
   if (is.null(temperature)){
     temperature <- hwRefTemp(probe)
@@ -145,6 +163,8 @@ hwCalibrProbe3D <- function(probe, E1, Ucal1, E2, Ucal2, E3, Ucal3, temperature=
   }
 }
 
+#' Calibração de sensor 2D
+#' @export
 hwCalibrProbe2D <- function(probe, E1, Ucal1, E2, Ucal2, temperature=NULL, curvefit=kingVel){
   if (is.null(temperature)){
     temperature <- hwRefTemp(probe)
