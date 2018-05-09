@@ -3,7 +3,7 @@ test2D <- function(){
   support <- hwSupport(contacts=2)
   cable <- hwCable()
   signal <- hwSignalConditioner()
-  bridge <- hwBridgeConfig()+
+  bridge <- hwBridgeConfig()
   w1 <- hwWire(3.3, X=pi/4, Y=-pi/4)
   w2 <- hwWire(3.4, X=3*pi/4, Y=pi/4)
 
